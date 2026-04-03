@@ -1,0 +1,20 @@
+-- CreateTable
+CREATE TABLE "Player" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "zenPoints" INTEGER NOT NULL DEFAULT 0,
+    "totalSolved" INTEGER NOT NULL DEFAULT 0,
+    "totalWrong" INTEGER NOT NULL DEFAULT 0,
+    "bestStreak" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "Attempt" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "playerId" INTEGER NOT NULL,
+    "question" TEXT NOT NULL,
+    "result" TEXT NOT NULL,
+    "timeTaken" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

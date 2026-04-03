@@ -1,0 +1,10 @@
+Python lists store multiple values using []
+
+A for loop is used to iterate over elements:
+for item in list:
+    print(item)
+
+Boolean variables:
+enemy_detected = False
+
+Use len(list) to get total number of elements

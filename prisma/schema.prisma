@@ -1,0 +1,42 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./plade.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Player {
+  id           Int      @id @default(autoincrement())
+  name         String
+  zenPoints    Int      @default(0)
+  totalSolved  Int      @default(0)
+  totalWrong   Int      @default(0)
+  bestStreak   Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  // 🔥 ADD THIS LINE
+  mapStats     PlayerMapStats[]
+}
+
+model Attempt {
+  id         Int      @id @default(autoincrement())
+  playerId   Int
+  mapName String?   // 🔥 ADD THIS
+  question   String
+  result     String
+  timeTaken  Int
+  createdAt  DateTime @default(now())
+}
+model PlayerMapStats {
+  id           Int      @id @default(autoincrement())
+  playerId     Int
+  mapName      String
+  zenPoints    Int      @default(0)
+  totalSolved  Int      @default(0)
+  totalWrong   Int      @default(0)
+  streak       Int      @default(0)
+
+  player       Player   @relation(fields: [playerId], references: [id])
+}
